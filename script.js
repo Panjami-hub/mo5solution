@@ -57,8 +57,9 @@ $(function () {
       homeHtmlUrl,
       function (homeHtml) {
         var chosenCategoryShortName = chooseRandomCategory(categories).short_name;
+        console.log("Random Category Chosen: ", chosenCategoryShortName); // Debugging
 
-        var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
+        var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'");
         insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
       },
       false
@@ -94,8 +95,9 @@ $(function () {
 
   // Function to display menu items for a chosen category
   function buildAndShowMenuItemsHTML(categoryMenuItems) {
-    insertHtml("#main-content", "<h2>" + categoryMenuItems.category.name + "</h2>");
+    insertHtml("#main-content", "<h2>Menu for " + categoryMenuItems.category.name + "</h2>");
   }
 
   global.$dc = dc;
 })(window);
+
